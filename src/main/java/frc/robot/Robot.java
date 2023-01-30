@@ -4,25 +4,27 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+import edu.wpi.first.wpilibj2.command.Command;
 
-/** This is a demo program showing how to use Mecanum control with the MecanumDrive class. */
 public class Robot extends TimedRobot {
+  private RobotContainer m_robotContainer;
+
+  private Command m_autonomousCommand;
+
   private static final int kFrontLeftChannel = 2;
   private static final int kRearLeftChannel = 3;
   private static final int kFrontRightChannel = 1;
   private static final int kRearRightChannel = 0;
 
-  private static final int kJoystickChannel = 1;
-
-  private MecanumDrive m_robotDrive;
-  private Joystick m_stick;
+  public static MecanumDrive m_robotDrive;
 
   @Override
   public void robotInit() {
+    m_robotContainer = new RobotContainer();
+
     PWMSparkMax frontLeft = new PWMSparkMax(kFrontLeftChannel);
     PWMSparkMax rearLeft = new PWMSparkMax(kRearLeftChannel);
     PWMSparkMax frontRight = new PWMSparkMax(kFrontRightChannel);
@@ -34,14 +36,36 @@ public class Robot extends TimedRobot {
     rearRight.setInverted(true);
 
     m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
+  }
 
-    m_stick = new Joystick(kJoystickChannel);
+  @Override
+  public void autonomousInit() {
+    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    if (m_autonomousCommand != null) {
+      m_autonomousCommand.schedule();
+    }
   }
 
   @Override
   public void teleopPeriodic() {
     // Use the joystick X axis for forward movement, Y axis for lateral
     // movement, and Z axis for rotation.
-    m_robotDrive.driveCartesian(-m_stick.getY() * 0.8, -m_stick.getX() * 0.8, -m_stick.getZ() * 0.8);
+
+    // Speed switching needs to be performed here as whileTrue() does not cover two bumpers being false at the same time
+
+    double xSpeed = RobotContainer.driveController.getLeftX();
+    double ySpeed = RobotContainer.driveController.getLeftY();
+    double zRotation = RobotContainer.driveController.getRightX();
+    double multiplier;
+
+    if (RobotContainer.driveController.leftBumper().getAsBoolean()) {
+      multiplier = 1.0;
+    } else if (RobotContainer.driveController.rightBumper().getAsBoolean()) {
+      multiplier = 0.5;
+    } else {
+      multiplier = 0.8;
+    }
+
+    m_robotDrive.driveCartesian(xSpeed * multiplier, ySpeed * multiplier, zRotation * multiplier);
   }
 }
