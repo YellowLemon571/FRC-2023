@@ -28,6 +28,14 @@ private void configureButtonBindings() {
   AttachmentController.b().whileTrue(lift.lowerLift());
   AttachmentController.rightTrigger().whileTrue(Claw.closeClaw());
   AttachmentController.leftTrigger().whileTrue(Claw.openClaw());
+
+  if DriveController.leftBumper().whileTrue(
+    m_robotDrive.driveCartesian(-m_stick.getY() * 0.5, -m_stick.getX() * 0.5, -m_stick.getZ() * 0.5);){
+  } else if DriveController.rightBumper().whileTrue(
+    m_robotDrive.driveCartesian(-m_stick.getY() , -m_stick.getX(), -m_stick.getZ());) {
+  } else m_robotDrive.driveCartesian(-m_stick.getY() * 0.8, -m_stick.getX() * 0.8, -m_stick.getZ() * 0.8); {
+  }
+
   }
 
 }
