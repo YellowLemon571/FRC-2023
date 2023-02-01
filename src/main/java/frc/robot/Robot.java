@@ -37,6 +37,19 @@ public class Robot extends TimedRobot {
 
     m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
   }
+  
+@Override
+public void robotPeriodic() {
+  if (driveController.start.getAsBoolean() && driveController.a.getAsBoolean()) {
+    CommandXboxController temp = attachmentController;
+    attachmentController = driveController;
+    driveController = temp;
+  } else (attachmentController.start.getAsBoolean() && attachmentController.b.getAsBoolean()) {
+    CommandXboxController temp = driveController;
+    driveController = attachmentController;
+    attachmentController = temp;
+  }
+}
 
   @Override
   public void autonomousInit() {
