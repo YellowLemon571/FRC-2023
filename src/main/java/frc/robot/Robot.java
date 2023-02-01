@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 public class Robot extends TimedRobot {
   private RobotContainer m_robotContainer;
@@ -40,14 +41,14 @@ public class Robot extends TimedRobot {
   
 @Override
 public void robotPeriodic() {
-  if (driveController.start.getAsBoolean() && driveController.a.getAsBoolean()) {
-    CommandXboxController temp = attachmentController;
-    attachmentController = driveController;
-    driveController = temp;
-  } else (attachmentController.start.getAsBoolean() && attachmentController.b.getAsBoolean()) {
-    CommandXboxController temp = driveController;
-    driveController = attachmentController;
-    attachmentController = temp;
+  if (RobotContainer.driveController.start().getAsBoolean() && RobotContainer.driveController.a().getAsBoolean()) {
+    CommandXboxController temp = RobotContainer.attachmentController;
+    RobotContainer.attachmentController = RobotContainer.driveController;
+    RobotContainer.driveController = temp;
+  } else if (RobotContainer.attachmentController.start().getAsBoolean() && RobotContainer.attachmentController.b().getAsBoolean()) {
+    CommandXboxController temp = RobotContainer.driveController;
+    RobotContainer.driveController = RobotContainer.attachmentController;
+    RobotContainer.attachmentController = temp;
   }
 }
 
