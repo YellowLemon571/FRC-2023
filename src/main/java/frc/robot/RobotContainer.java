@@ -7,10 +7,14 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 //import frc.robot.subsystem.DriveTrain;
 import frc.robot.Subsystem.Claw;
+import frc.robot.Subsystem.DriveRecorder;
 import frc.robot.Subsystem.Lift;
 
 public class RobotContainer  {
   // The robot's subsystems and commands are defined here...
+
+  public static DriveRecorder m_driveRecorder = new DriveRecorder();
+
   public static CommandXboxController driveController = new CommandXboxController(1); 
   public static CommandXboxController attachmentController = new CommandXboxController(0); 
 
@@ -20,7 +24,6 @@ public class RobotContainer  {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-    //   configureDriveTrain();
   }
 
   public Command getAutonomousCommand() {
@@ -36,6 +39,9 @@ public class RobotContainer  {
     attachmentController.b().whileTrue(lift.lowerLift());
     attachmentController.rightTrigger().whileTrue(claw.closeClaw());
     attachmentController.leftTrigger().whileTrue(claw.openClaw());
+
+    driveController.povUp().onTrue(new Record(true));
+    driveController.povDown().onTrue(new Record(false));
   }
 
 }

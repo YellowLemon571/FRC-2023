@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 public class Robot extends TimedRobot {
@@ -19,6 +20,9 @@ public class Robot extends TimedRobot {
   private static final int kRearLeftChannel = 3;
   private static final int kFrontRightChannel = 1;
   private static final int kRearRightChannel = 0;
+
+  public static boolean movement;
+  public static double xSpeed, ySpeed, zRotation, multiplier;
 
   public static MecanumDrive m_robotDrive;
 
@@ -41,6 +45,8 @@ public class Robot extends TimedRobot {
   
 @Override
 public void robotPeriodic() {
+  CommandScheduler.getInstance().run();
+
   if (RobotContainer.driveController.start().getAsBoolean() && RobotContainer.driveController.a().getAsBoolean()) {
     CommandXboxController temp = RobotContainer.attachmentController;
     RobotContainer.attachmentController = RobotContainer.driveController;
@@ -61,25 +67,31 @@ public void robotPeriodic() {
   }
 
   @Override
+  public void teleopInit() {
+    movement = true;
+  }
+
+  @Override
   public void teleopPeriodic() {
     // Use the joystick X axis for forward movement, Y axis for lateral
     // movement, and Z axis for rotation.
 
     // Speed switching needs to be performed here as whileTrue() does not cover two bumpers being false at the same time
 
-    double xSpeed = RobotContainer.driveController.getLeftX();
-    double ySpeed = RobotContainer.driveController.getLeftY();
-    double zRotation = RobotContainer.driveController.getRightX();
-    double multiplier;
+    if (movement) { // Needed for recording playback
+      xSpeed = RobotContainer.driveController.getLeftX();
+      ySpeed = RobotContainer.driveController.getLeftY();
+      zRotation = RobotContainer.driveController.getRightX();
 
-    if (RobotContainer.driveController.leftBumper().getAsBoolean()) {
-      multiplier = 1.0;
-    } else if (RobotContainer.driveController.rightBumper().getAsBoolean()) {
-      multiplier = 0.5;
-    } else {
-      multiplier = 0.8;
+      if (RobotContainer.driveController.leftBumper().getAsBoolean()) {
+        multiplier = 1.0;
+      } else if (RobotContainer.driveController.rightBumper().getAsBoolean()) {
+        multiplier = 0.5;
+      } else {
+        multiplier = 0.8;
+      }
+
+      m_robotDrive.driveCartesian(xSpeed * multiplier, ySpeed * multiplier, zRotation * multiplier);
     }
-
-    m_robotDrive.driveCartesian(xSpeed * multiplier, ySpeed * multiplier, zRotation * multiplier);
   }
 }
