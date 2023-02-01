@@ -1,4 +1,4 @@
-package frc.robot.Subsystem;
+package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.motorcontrol.PWMTalonFX;
 //import com.ctre.phoenix.motorcontrol.can.TalonSRX;

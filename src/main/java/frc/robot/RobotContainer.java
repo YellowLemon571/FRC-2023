@@ -4,11 +4,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 //import edu.wpi.first.wpilibj2.command.Command;
 //import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-
-//import frc.robot.subsystem.DriveTrain;
-import frc.robot.Subsystem.Claw;
-import frc.robot.Subsystem.DriveRecorder;
-import frc.robot.Subsystem.Lift;
+import frc.robot.commands.Record;
+import frc.robot.subsystems.Claw;
+import frc.robot.subsystems.DriveRecorder;
+import frc.robot.subsystems.Lift;
 
 public class RobotContainer  {
   // The robot's subsystems and commands are defined here...
