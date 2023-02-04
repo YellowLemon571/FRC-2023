@@ -79,9 +79,9 @@ public void robotPeriodic() {
     // Speed switching needs to be performed here as whileTrue() does not cover two bumpers being false at the same time
 
     if (movement) { // Needed for recording playback
-      xSpeed = RobotContainer.driveController.getLeftX();
-      ySpeed = RobotContainer.driveController.getLeftY();
-      zRotation = RobotContainer.driveController.getRightX();
+      xSpeed = RobotContainer.driveController.getLeftY();
+      ySpeed = RobotContainer.driveController.getLeftX();
+      zRotation = RobotContainer.driveController.getRightZ();
 
       if (RobotContainer.driveController.leftBumper().getAsBoolean()) {
         multiplier = 1.0;
