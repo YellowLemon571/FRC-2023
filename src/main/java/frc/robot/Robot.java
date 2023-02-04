@@ -81,7 +81,7 @@ public void robotPeriodic() {
     if (movement) { // Needed for recording playback
       xSpeed = RobotContainer.driveController.getLeftY();
       ySpeed = RobotContainer.driveController.getLeftX();
-      zRotation = RobotContainer.driveController.getRightZ();
+      zRotation = RobotContainer.driveController.getRightX();
 
       if (RobotContainer.driveController.leftBumper().getAsBoolean()) {
         multiplier = 1.0;
