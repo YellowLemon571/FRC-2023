@@ -86,9 +86,9 @@ public void robotPeriodic() {
       if (RobotContainer.driveController.leftBumper().getAsBoolean()) {
         multiplier = 1.0;
       } else if (RobotContainer.driveController.rightBumper().getAsBoolean()) {
-        multiplier = 0.5;
+        multiplier = 0.25;
       } else {
-        multiplier = 0.8;
+        multiplier = 0.5;
       }
 
       m_robotDrive.driveCartesian(xSpeed * multiplier, ySpeed * multiplier, zRotation * multiplier);
