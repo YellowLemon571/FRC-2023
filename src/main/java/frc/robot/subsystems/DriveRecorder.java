@@ -23,7 +23,9 @@ public class DriveRecorder extends SubsystemBase {
   private ArrayList<ArrayList<Double>> record;
 
   /** Creates a new DriveRecorder. */
-  public DriveRecorder() {}
+  public DriveRecorder() {
+    SmartDashboard.putString("Record Base64", "Ready to record");
+  }
 
   @Override
   public void periodic() {
@@ -44,6 +46,7 @@ public class DriveRecorder extends SubsystemBase {
       record = new ArrayList<>();
       tick = 0.0;
       active = true;
+      SmartDashboard.putString("Record Base64", "RECORDING");
       return true;
     } else {
       return false;
