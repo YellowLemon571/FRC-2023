@@ -96,7 +96,7 @@ public void robotPeriodic() {
         multiplier = 0.5;
       }
 
-      m_robotDrive.driveCartesian(-m_stick.getY(), -m_stick.getX(), -m_stick.getZ());
+      m_robotDrive.driveCartesian(m_stick.getY(), -m_stick.getX(), -m_stick.getZ());
     }
   }
 }

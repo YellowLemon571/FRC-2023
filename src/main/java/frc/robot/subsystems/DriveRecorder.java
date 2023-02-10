@@ -12,7 +12,7 @@ import java.util.Base64;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Robot;
+//import frc.robot.Robot;
 
 // Subsystem to take recordings of the robot's movements then play them back.
 
@@ -33,9 +33,9 @@ public class DriveRecorder extends SubsystemBase {
     if (active) {
       ArrayList<Double> data = new ArrayList<>();
       data.add(tick);
-      data.add(Robot.xSpeed);
-      data.add(Robot.ySpeed);
-      data.add(Robot.zRotation);
+    //  data.add(Robot.xSpeed);
+    //  data.add(Robot.ySpeed);
+    //  data.add(Robot.zRotation);
       record.add(data);
       tick++;
     }
