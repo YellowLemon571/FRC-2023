@@ -20,4 +20,8 @@ public class Claw extends SubsystemBase{
   public CommandBase closeClaw(){
     return this.run(()  -> claw.set(-0.5));
   }
+
+  public CommandBase holdClaw(){
+    return this.run(()  -> claw.set(0));
+  }
 }

@@ -32,13 +32,30 @@ public class RobotContainer  {
 
   private void configureButtonBindings() { 
 
-    // Consider adding functionality to stop lift/claw motors, constantly-running motors may lead to catastrophe
+    if (RobotContainer.attachmentController.a().getAsBoolean()){
+      lift.raiseLift();
+    } else {
+      lift.stopLift();
+    }
 
-    attachmentController.a().whileTrue(lift.raiseLift());
-    attachmentController.b().whileTrue(lift.lowerLift());
-    attachmentController.rightTrigger().whileTrue(claw.closeClaw());
-    attachmentController.leftTrigger().whileTrue(claw.openClaw());
+    if (RobotContainer.attachmentController.b().getAsBoolean()){
+      lift.lowerLift();
+    } else {
+      lift.stopLift();
+    }
 
+    if (RobotContainer.attachmentController.rightTrigger().getAsBoolean()){
+      claw.closeClaw();
+    } else {
+      claw.holdClaw();
+    }
+
+    if (RobotContainer.attachmentController.leftTrigger().getAsBoolean()){
+      claw.openClaw();
+    } else {
+      claw.holdClaw();
+    }
+    
     driveController.povUp().onTrue(new Record(true));
     driveController.povDown().onTrue(new Record(false));
   }
