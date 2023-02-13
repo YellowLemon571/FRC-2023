@@ -8,13 +8,13 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj.Joystick;
+//import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 public class Robot extends TimedRobot {
-  private RobotContainer m_robotContainer;
-
+  private RobotContainer m_robotContainer;  
+  public static CommandXboxController driveController = new CommandXboxController(1); 
   private Command m_autonomousCommand;
 
   private static final int kFrontLeftChannel = 2;
@@ -27,8 +27,6 @@ public class Robot extends TimedRobot {
   public static double multiplier;
 
   public MecanumDrive m_robotDrive;
-  private Joystick m_stick;
-
   @Override
   public void robotInit() {
     m_robotContainer = new RobotContainer();
@@ -44,8 +42,6 @@ public class Robot extends TimedRobot {
     rearRight.setInverted(true);
 
     m_robotDrive = new MecanumDrive(frontLeft, rearLeft, frontRight, rearRight);
-
-    m_stick = new Joystick(1);
   }
   
 @Override
@@ -84,9 +80,6 @@ public void robotPeriodic() {
     // Speed switching needs to be performed here as whileTrue() does not cover two bumpers being false at the same time
 
     if (movement) { // Needed for recording playback
-     // xSpeed = RobotContainer.driveController.getLeftY();
-     // ySpeed = RobotContainer.driveController.getLeftX();
-     // zRotation = RobotContainer.driveController.getRightX();
 
       if (RobotContainer.driveController.leftBumper().getAsBoolean()) {
         multiplier = 1.0;
@@ -96,7 +89,7 @@ public void robotPeriodic() {
         multiplier = 0.5;
       }
 
-      m_robotDrive.driveCartesian(-m_stick.getY()* multiplier, m_stick.getX()*multiplier, -m_stick.getZ()*multiplier);
+      m_robotDrive.driveCartesian(-driveController.getLeftY()* multiplier, driveController.getLeftX()*multiplier, driveController .getRightX()*multiplier);
     }
   }
 }
