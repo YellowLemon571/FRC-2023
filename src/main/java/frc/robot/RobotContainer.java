@@ -31,32 +31,20 @@ public class RobotContainer  {
   }
 
   private void configureButtonBindings() { 
+   attachmentController.a().onTrue(lift.raiseLift());
+   attachmentController.a().onFalse(lift.stopLift());
 
-    if (RobotContainer.attachmentController.a().getAsBoolean()){
-      lift.raiseLift();
-    } else {
-    }
+   attachmentController.b().onTrue(lift.lowerLift());
+   attachmentController.b().onFalse(lift.stopLift());
 
-    if (RobotContainer.attachmentController.b().getAsBoolean()){
-      lift.lowerLift();
-    } else {
-      lift.stopLift();
-    }
+   attachmentController.leftTrigger().onTrue(claw.openClaw());
+   attachmentController.leftTrigger().onFalse(claw.holdClaw());
 
-    if (RobotContainer.attachmentController.rightTrigger().getAsBoolean()){
-      claw.closeClaw();
-    } else {
-      claw.holdClaw();
-    }
+   attachmentController.rightTrigger().onTrue(claw.closeClaw());
+   attachmentController.rightTrigger().onFalse(claw.holdClaw());
 
-    if (RobotContainer.attachmentController.leftTrigger().getAsBoolean()){
-      claw.openClaw();
-    } else {
-      claw.holdClaw();
-    }
-    
-    driveController.povUp().onTrue(new Record(true));
-    driveController.povDown().onTrue(new Record(false));
+   driveController.povUp().onTrue(new Record(true));
+   driveController.povDown().onTrue(new Record(false));
   }
 
 }
