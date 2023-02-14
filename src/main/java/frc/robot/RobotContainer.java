@@ -35,7 +35,6 @@ public class RobotContainer  {
     if (RobotContainer.attachmentController.a().getAsBoolean()){
       lift.raiseLift();
     } else {
-      lift.stopLift();
     }
 
     if (RobotContainer.attachmentController.b().getAsBoolean()){
