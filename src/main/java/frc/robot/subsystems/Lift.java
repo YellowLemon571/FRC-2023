@@ -8,11 +8,11 @@ public class Lift extends SubsystemBase {
   private PWMTalonFX Lift = new PWMTalonFX(4);
 
   public CommandBase  raiseLift() {
-        return this.run(() -> Lift.set(0.5));
+        return this.run(() -> Lift.set(-0.25));
     }
 
   public CommandBase  lowerLift() {
-      return this.run(() -> Lift.set(-0.5));
+      return this.run(() -> Lift.set(0.25));
     }
 
   public CommandBase  stopLift() {
