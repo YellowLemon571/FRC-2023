@@ -8,13 +8,11 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import edu.wpi.first.wpilibj2.command.Command;
-//import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 public class Robot extends TimedRobot {
   private RobotContainer m_robotContainer;  
-  public static CommandXboxController driveController = new CommandXboxController(1); 
   private Command m_autonomousCommand;
 
   private static final int kFrontLeftChannel = 2;
@@ -23,8 +21,7 @@ public class Robot extends TimedRobot {
   private static final int kRearRightChannel = 0;
 
   public static boolean movement;
-  //public static double xSpeed, ySpeed, zRotation, multiplier;
-  public static double multiplier;
+  //public static double multiplier;
 
   public MecanumDrive m_robotDrive;
   @Override
@@ -81,6 +78,7 @@ public void robotPeriodic() {
 
     if (movement) { // Needed for recording playback
 
+      double multiplier;
       if (RobotContainer.driveController.leftBumper().getAsBoolean()) {
         multiplier = 1.0;
       } else if (RobotContainer.driveController.rightBumper().getAsBoolean()) {
@@ -89,7 +87,7 @@ public void robotPeriodic() {
         multiplier = 0.25;
       }
 
-      m_robotDrive.driveCartesian(-driveController.getLeftY()* multiplier, driveController.getLeftX()*multiplier, driveController .getRightX()*multiplier);
+      m_robotDrive.driveCartesian(-RobotContainer.driveController.getLeftY() * multiplier, RobotContainer.driveController.getLeftX() * multiplier, RobotContainer.driveController.getRightX() * multiplier);
     }
   }
 }
