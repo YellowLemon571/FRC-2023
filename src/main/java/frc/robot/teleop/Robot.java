@@ -6,7 +6,7 @@ package frc.robot.teleop;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
-import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -28,10 +28,10 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_robotContainer = new RobotContainer();
 
-    PWMSparkMax frontLeft = new PWMSparkMax(kFrontLeftChannel);
-    PWMSparkMax rearLeft = new PWMSparkMax(kRearLeftChannel);
-    PWMSparkMax frontRight = new PWMSparkMax(kFrontRightChannel);
-    PWMSparkMax rearRight = new PWMSparkMax(kRearRightChannel);
+    VictorSP frontLeft = new VictorSP(kFrontLeftChannel);
+    VictorSP rearLeft = new VictorSP(kRearLeftChannel);
+    VictorSP frontRight = new VictorSP(kFrontRightChannel);
+    VictorSP rearRight = new VictorSP(kRearRightChannel);
 
     // Invert the right side motors.
     // You may need to change or remove this to match your robot.

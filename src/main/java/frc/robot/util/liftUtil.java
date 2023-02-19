@@ -1,9 +1,16 @@
 package frc.robot.util;
 
-import edu.wpi.first.wpilibj.motorcontrol.PWMTalonFX;
-//import edu.wpi.first.wpilibj2.command.SubsystemBase;
-//import frc.robot.teleop.Robot;
+//import com.ctre.phoenix.motorcontrol.TalonFXFeedbackDevice;
 
+import edu.wpi.first.wpilibj.motorcontrol.PWMTalonFX;
+/*import frc.robot.falonThings.*;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.motorcontrol.TalonFXControlMode;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motion.*;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.teleop.Robot;
+*/
 public class liftUtil {
  
 
@@ -49,5 +56,23 @@ public void lowerLiftTo(double distanceInCM, double targetSpeed){
 
     stopLift();
 }
+
+/* 
+public void increasePosition(int increaseAmount) {
+    int currentPosition;
+    int newPosition;
+    currentPosition = Lift.setSelectedSensorPosition();
+    newPosition = currentPosition + increaseAmount;
+    changePosition(newPosition);
+}
+
+public void decreasePosition(int decreaseAmount) {
+    int currentPosition;
+    int newPosition;
+    currentPosition = Lift.setSelectedSensorPosition();
+    newPosition = currentPosition - decreaseAmount;
+    changePosition(newPosition);
+}
+*/
 
 }
