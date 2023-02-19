@@ -1,7 +1,5 @@
 package frc.robot.util;
 
-//import com.ctre.phoenix.motorcontrol.TalonFXFeedbackDevice;
-
 import edu.wpi.first.wpilibj.motorcontrol.PWMTalonFX;
 /*import frc.robot.falonThings.*;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
@@ -9,11 +7,11 @@ import com.ctre.phoenix.motorcontrol.TalonFXControlMode;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motion.*;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.teleop.Robot;
+import com.ctre.phoenix.motorcontrol.TalonFXFeedbackDevice;
 */
+
 public class liftUtil {
  
-
 //the purpose of this is to convert our revolutions per minute (RPM) into distance traveled
 static final double COUNTS_PER_MOTOR_REV = 6380;  //*2 adjust for mecanum
 static final double WHEEL_DIAMETER = 6.5405;     // In centimeters
@@ -24,7 +22,6 @@ static final double COUNTS_PER_GEAR_REV = COUNTS_PER_MOTOR_REV * GEAR_REDUCTION;
 static final double COUNTS_PER_DEGREE = COUNTS_PER_GEAR_REV/360;
 public static final double getEncoderCount = 0;
 
-//lower cube grid height
 private PWMTalonFX Lift = new PWMTalonFX(4);
 
 public void stopLift(){
