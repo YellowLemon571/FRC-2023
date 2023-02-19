@@ -71,20 +71,15 @@ public void robotPeriodic() {
 
   @Override
   public void teleopPeriodic() {
-    // Use the joystick X axis for forward movement, Y axis for lateral
-    // movement, and Z axis for rotation.
-
-    // Speed switching needs to be performed here as whileTrue() does not cover two bumpers being false at the same time
-
     if (movement) { // Needed for recording playback
 
       double multiplier;
       if (RobotContainer.driveController.leftBumper().getAsBoolean()) {
         multiplier = 1.0;
       } else if (RobotContainer.driveController.rightBumper().getAsBoolean()) {
-        multiplier = 0.15;
-      } else {
         multiplier = 0.25;
+      } else {
+        multiplier = 0.5;
       }
 
       m_robotDrive.driveCartesian(-RobotContainer.driveController.getLeftY() * multiplier, RobotContainer.driveController.getLeftX() * multiplier, RobotContainer.driveController.getRightX() * multiplier);

@@ -1,10 +1,15 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.motorcontrol.PWMTalonFX;
+
+//for command functions
 import edu.wpi.first.wpilibj2.command.CommandBase;
+
+//allows for "run" commands
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Lift extends SubsystemBase {
+  //says what port the motor is plugged into
   private PWMTalonFX Lift = new PWMTalonFX(4);
 
   public CommandBase  raiseLift() {
