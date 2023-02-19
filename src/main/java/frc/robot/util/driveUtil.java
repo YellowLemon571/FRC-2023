@@ -2,6 +2,7 @@ package frc.robot.util;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.teleop.Robot;
+
 /*Because tyra can't remember what she calleed the motors
 *   |
 *   v
@@ -28,6 +29,10 @@ static final double COUNTS_PER_DEGREE = COUNTS_PER_GEAR_REV/360;
 //utility commands
 public void stopRobot(){
     m_robotDrive.set(0);
+}
+
+public void WaitCommand​(double seconds) {
+    m_robotDrive.set(seconds);
 }
 
 public void driveRobotDistanceForward(double distanceInCM, double targetSpeed) {
@@ -129,9 +134,8 @@ public void driveRobotDistanceStrafeLeft(double distanceInCM, double targetSpeed
     stopRobot();
 }
 
-public void rotateRight90Degrees() {
+public void rotateRight90Degrees(double targetSpeed) {
     int targetCount;
-    double targetSpeed = 0.5;
     double diameter = 79.708;//diameter in cms measured between left front and right rear or RF and LR
 
     //convert centimeters to number cycles to drive
@@ -164,9 +168,8 @@ public void rotateRight90Degrees() {
     stopRobot();
 }
 
-public void rotateLeft90Degrees() {
+public void rotateLeft90Degrees(double targetSpeed) {
     int targetCount;
-    double targetSpeed = 0.5;
     double diameter = 79.708;//diameter in cms measured between left front and right rear or RF and LR
 
     //convert centimeters to number cycles to drive
@@ -199,9 +202,8 @@ public void rotateLeft90Degrees() {
     stopRobot();
 }
 
-public void rotateRight45Degrees() {
+public void rotateRight45Degrees(double targetSpeed) {
     int targetCount;
-    double targetSpeed = 0.5;
     double diameter = 79.708;//diameter in cms measured between left front and right rear or RF and LR
 
     //convert centimeters to number cycles to drive
@@ -234,9 +236,8 @@ public void rotateRight45Degrees() {
     stopRobot();
 }
 
-public void rotateLeft45Degrees() {
+public void rotateLeft45Degrees(double targetSpeed) {
     int targetCount;
-    double targetSpeed = 0.5;
     double diameter = 79.708;//diameter in cms measured between left front and right rear or RF and LR
 
     //convert centimeters to number cycles to drive
