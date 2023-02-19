@@ -10,12 +10,10 @@ import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import frc.robot.util.driveUtil;
 
 public class Robot extends TimedRobot {
   private RobotContainer m_robotContainer;  
   private Command m_autonomousCommand;
-  private driveUtil drive;
 
   public static final int kFrontLeftChannel = 2;
   public static final int kRearLeftChannel = 3;
@@ -60,10 +58,6 @@ public void robotPeriodic() {
 
 @Override
 public void autonomousPeriodic() {
-  drive.driveRobotDistanceForward(65, 0.5);
-  drive.driveRobotDistanceBackward(65, 0.5);
-  drive.driveRobotDistanceStrafeRight(65, 0.5);
-  drive.driveRobotDistanceStrafeLeft(65, 0.5);
 }
 
   @Override

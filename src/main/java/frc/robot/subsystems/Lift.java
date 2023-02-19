@@ -23,4 +23,5 @@ public class Lift extends SubsystemBase {
   public CommandBase  stopLift() {
     return this.run(() -> Lift.set(0));
    }
+
 }

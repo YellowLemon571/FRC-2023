@@ -15,6 +15,7 @@ static final double WHEEL_CIRCUMFERENCE = WHEEL_DIAMETER * Math.PI;
 static final double GEAR_REDUCTION = 1.0; // output (wheel) speed / input (motor) speed
 static final double COUNTS_PER_GEAR_REV = COUNTS_PER_MOTOR_REV * GEAR_REDUCTION;
 static final double COUNTS_PER_DEGREE = COUNTS_PER_GEAR_REV/360;
+public static final double getEncoderCount = 0;
 
 //lower cube grid height
 private PWMTalonFX Lift = new PWMTalonFX(4);
@@ -48,4 +49,5 @@ public void lowerLiftTo(double distanceInCM, double targetSpeed){
 
     stopLift();
 }
+
 }
