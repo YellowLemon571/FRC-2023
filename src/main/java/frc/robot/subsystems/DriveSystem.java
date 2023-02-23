@@ -8,9 +8,7 @@ public class DriveSystem {
     public static final int kRearLeftChannel = 3;
     public static final int kFrontRightChannel = 1;
     public static final int kRearRightChannel = 0;
-    public static boolean movement;
 
-    
     VictorSP frontLeft = new VictorSP(kFrontLeftChannel);
     VictorSP rearLeft = new VictorSP(kRearLeftChannel);
     VictorSP frontRight = new VictorSP(kFrontRightChannel);
