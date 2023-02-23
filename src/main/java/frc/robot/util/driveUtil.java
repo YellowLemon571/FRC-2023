@@ -1,7 +1,7 @@
 package frc.robot.util;
 
+import frc.robot.subsystems.DriveSystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.teleop.Robot;
 
 /*Because tyra can't remember what she calleed the motors
 *   |
@@ -10,11 +10,11 @@ import frc.robot.teleop.Robot;
 public class driveUtil extends SubsystemBase {
 
  //there is probably a better way to call the motors but idk what that is
-public static Robot m_robotDrive = new Robot();
-public static Robot frontLeft = new Robot();
-public static Robot frontRight = new Robot();
-public static Robot rearLeft = new Robot();
-public static Robot rearRight = new Robot();
+ public DriveSystem m_robotDrive = new DriveSystem();
+ public DriveSystem frontLeft;
+ public DriveSystem frontRight;
+ public DriveSystem rearRight;
+ public DriveSystem rearLeft;
 
 //the purpose of this is to convert our revolutions per minute (RPM) into distance traveled
 static final double COUNTS_PER_MOTOR_REV = 10620;  //*2 adjust for mecanum
