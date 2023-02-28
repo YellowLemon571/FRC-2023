@@ -10,13 +10,13 @@ public class simple_auto {
     //private Claw claw;
 
 public void BasicAuto(){
-    drive.driveRobotDistanceForward(65, 0.5);
+    drive.driveRobotDistanceForward(65, 0.25);
     drive.WaitCommand​(5);
-    drive.driveRobotDistanceBackward(65, 0.5);
+    drive.driveRobotDistanceBackward(65, 0.25);
     drive.WaitCommand​(5);
-    drive.driveRobotDistanceStrafeRight(65, 0.5);
+    drive.driveRobotDistanceStrafeRight(65, 0.25);
     drive.WaitCommand​(5);
-    drive.driveRobotDistanceStrafeLeft(65, 0.5); 
+    drive.driveRobotDistanceStrafeLeft(65, 0.25); 
     drive.WaitCommand​(5);
     drive.rotateLeft45Degrees(0.5);
     drive.WaitCommand​(5);
