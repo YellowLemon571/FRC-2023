@@ -6,15 +6,8 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Claw extends SubsystemBase{
-  private PWMTalonFX LeftClaw = new PWMTalonFX(5);
-  private PWMTalonFX RightClaw = new PWMTalonFX(6);
+  private PWMTalonFX Claw = new PWMTalonFX(6);
 
-  public final MotorControllerGroup claw =
-        new MotorControllerGroup(LeftClaw, RightClaw);
-
-public Claw(){
-  RightClaw.setInverted(true);
-}
   public CommandBase openClaw(){
     return this.run(()  -> claw.set(0.5));
   }

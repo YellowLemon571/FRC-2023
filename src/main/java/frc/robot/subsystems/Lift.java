@@ -10,7 +10,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Lift extends SubsystemBase {
   //says what port the motor is plugged into
-  private PWMTalonFX Lift = new PWMTalonFX(4);
+  private PWMTalonFX rightLift = new PWMTalonFX(4);
+  private PWMTalonFX leftLift = new PWMTalonFX(5);
+
+  public final lift Lift =
+        new lift(rightLift, leftLift);
 
   public CommandBase  raiseLift() {
         return this.run(() -> Lift.set(-0.25));
