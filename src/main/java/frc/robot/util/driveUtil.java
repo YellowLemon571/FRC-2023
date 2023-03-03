@@ -31,7 +31,7 @@ public void stopRobot(){
     m_robotDrive.set(0);
 }
 
-public void WaitCommand​(double seconds) {
+public void WaitCommand(double seconds) {
     m_robotDrive.set(seconds);
 }
 
